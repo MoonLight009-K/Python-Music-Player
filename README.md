@@ -1,2 +1,2 @@
 # Python-Music-Player
-A simple simulation of a music player using Python
+A simple simulation of a music player using Python.
