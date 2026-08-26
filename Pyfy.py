@@ -1,15 +1,17 @@
-# Aluno: Kaiky Santos Galdino
-
 from pygame import mixer
 from random import shuffle
 mixer.init()
 
-biblioteca = [ # Unica coisa que o programador precisa modificar no codigo caso queira adicionar/remover
-    "Counting Stars - OneRepublic", # Nomes tem que ser iguais ao arquivo da musica
+biblioteca = [ # Unica coisa que precisa modificar no codigo caso queira adicionar/remover
+    "Tá Rindo, é - Ana Carolina", # Nomes tem que ser iguais ao arquivo da musica
     "Talking to the Moon - Bruno Mars",
     "We Don't Talk Anymore - Charlie Puth",
-    "There's Nothing Holding Me Back - Shawn Mendes",
-    "Accidentally In Love - Counting Crows"
+    "There's Nothing Holding Me Back - Shawn Mendes (DJ Ice ver.)",
+    "Accidentally In Love - Counting Crows",
+    "Oceano - Djavn",
+    "A luz dos olhos - Tom Jobim",
+    "Aliança - Tribalistas",
+    "Recomeçar - Colo de Deus"
     ]
 
 vezes = {} # Existe apenas para otimizar buscas
@@ -102,7 +104,7 @@ def voltar(toc_agora):
         return toc_agora
     
 def festa():
-    shuffle(fila7)
+    shuffle(fila)
     print("UHUU!!! A FILA FOI MISTURADA!\n")
 
 
