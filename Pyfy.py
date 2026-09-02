@@ -75,12 +75,10 @@ def tocar_proxima():
         historico_copia.append(musica)
         vezes[musica] += 1
         
-        recente = historico[len(historico) - 1] # Serve para deixar o codigo mais legivel
-        
-        mixer.music.load(recente + ".mp3")
+        mixer.music.load(musica + ".mp3")
         mixer.music.play()
         
-        return recente
+        return musica
     
     print("Não há músicas na fila!\n")
     mixer.quit()
