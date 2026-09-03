@@ -1,18 +1,13 @@
+from os import listdir
 from pygame import mixer
 from random import shuffle
 mixer.init()
 
-biblioteca = [ # Unica coisa que precisa modificar no codigo caso queira adicionar/remover
-    "Tá Rindo, é - Ana Carolina", # Nomes tem que ser iguais ao arquivo da musica
-    "Talking to the Moon - Bruno Mars",
-    "We Don't Talk Anymore - Charlie Puth",
-    "There's Nothing Holding Me Back - Shawn Mendes (DJ Ice ver.)",
-    "Accidentally In Love - Counting Crows",
-    "Oceano - Djavn",
-    "A luz dos olhos - Tom Jobim",
-    "Aliança - Tribalistas",
-    "Recomeçar - Colo de Deus"
-    ]
+# Montar a biblioteca a partir das músicas que estão na pasta
+biblioteca = []
+
+for arq in listdir("musicas"):
+    biblioteca.append(arq)
 
 vezes = {} # Existe apenas para otimizar buscas
 
@@ -24,6 +19,7 @@ historico = []
 historico_copia = []
 tocando_agora = None
 
+#Mensagem de erro do menu para quando digitar algo fora de inteiro
 def ver_menu(nome):
     if (nome == None): nome = "nada"
     
@@ -75,7 +71,7 @@ def tocar_proxima():
         historico_copia.append(musica)
         vezes[musica] += 1
         
-        mixer.music.load(musica + ".mp3")
+        mixer.music.load("musicas\\" + musica)
         mixer.music.play()
         
         return musica
@@ -93,7 +89,7 @@ def voltar(toc_agora):
         historico.append(recente)
         vezes[recente] += 1
 
-        mixer.music.load(recente + ".mp3")
+        mixer.music.load("musicas\\" + recente)
         mixer.music.play()
         
         return recente
@@ -116,9 +112,19 @@ def festa():
 
 
 ver_menu(tocando_agora)
-opcao = int(input())
+opcao = -1
+valido = False
+
+while (not valido):
+    try:
+        opcao = int(input())
+        valido = True
+    except ValueError:
+        print("Valor inválido! Tente novamente")
 
 while (opcao != 0):
+    valido = False
+    
     if (opcao == 1):
         ver_biblioteca()
     elif (opcao == 2):
@@ -137,7 +143,14 @@ while (opcao != 0):
         print("Número inválido!\n")
     
     ver_menu(tocando_agora)
-    opcao = int(input())
+    
+    while (not valido):
+        try:
+            opcao = int(input())
+            valido = True
+        except ValueError:
+            print("Valor inválido! Tente novamente")
 
 mixer.quit()
 print("Obrigado por usar este programa!")
+
